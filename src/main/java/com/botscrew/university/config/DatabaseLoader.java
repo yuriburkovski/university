@@ -19,7 +19,7 @@ import java.util.Set;
 @Component
 @Order(value = 1)
 public class DatabaseLoader implements CommandLineRunner {
-    private static Logger LOG = LoggerFactory
+    private final static Logger LOG = LoggerFactory
             .getLogger(UniversityApplication.class);
 
     private final DepartmentRepository departmentRepository;
@@ -32,7 +32,7 @@ public class DatabaseLoader implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args){
         LOG.info("Setup Database...");
         Department departmentEcon = new Department("Economics", "Oleg Skrypka");
         Department departmentMath = new Department("Mathematics", "Ivan Petrov");

@@ -53,17 +53,15 @@ class LectorRepositoryTest {
     void when_find_by_name_only_lector_with_provided_name_should_be_returned() {
         String name = "Ivan Popov";
         List<Lector> findLector = lectorRepository.findByLectorName(name);
-
         assertNotNull(findLector);
-        assertTrue(findLector.size() == 1);
+        assertEquals(1, findLector.size());
         assertEquals(LectorDegree.ASSISTANT, findLector.get(0).getDegree());
     }
 
     @Test
-    void when_find_lector_does_not_contain_in_db_then_empty_list_should_be_thrown() throws Exception {
+    void when_find_lector_does_not_contain_in_db_then_empty_list_should_be_thrown() {
         String name = "Wrong Name";
         List<Lector> findLector = lectorRepository.findByLectorName(name);
-
         assertTrue(findLector.isEmpty());
     }
 }

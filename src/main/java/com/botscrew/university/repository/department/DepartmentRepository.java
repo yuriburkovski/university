@@ -22,7 +22,7 @@ public interface DepartmentRepository extends JpaRepository<Department, Integer>
     @Query("SELECT AVG(l.salary) FROM Department d JOIN d.lectors l WHERE d.departmentName=:depName")
     Double averageSalary(@Param("depName") String depName);
 
-    @Query("select count(l) from Department d join d.lectors l where d.departmentName=:depName")
+    @Query("SELECT COUNT(l) FROM Department d JOIN d.lectors l WHERE d.departmentName=:depName")
     Integer employeeCount(String depName);
 
 }

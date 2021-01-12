@@ -4,6 +4,7 @@ import com.botscrew.university.repository.lector.Lector;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity(name = "Department")
@@ -74,5 +75,21 @@ public class Department {
                 ", departmentName='" + departmentName + '\'' +
                 ", headOfDepartment='" + headOfDepartment + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Department that = (Department) o;
+        return id == that.id &&
+                Objects.equals(departmentName, that.departmentName) &&
+                Objects.equals(headOfDepartment, that.headOfDepartment) &&
+                Objects.equals(lectors, that.lectors);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, departmentName, headOfDepartment, lectors);
     }
 }
